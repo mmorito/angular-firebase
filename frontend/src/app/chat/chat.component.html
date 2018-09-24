@@ -1,3 +1,30 @@
-<p>
-  chat works!
-</p>
+<div class="container">
+  <div class="card main">
+    <div class="card-header">
+      ヘッダー部
+    </div>
+    <div class="card-body">
+      <!--左コメント-->
+      <div class="says">
+        <p>左ふきだし文</p>
+      </div>
+
+      <!--右コメント-->
+      <div class="mycomment">
+        <p>相手コメント</p>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      <form>
+        <div class="form-group">
+          <textarea class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <input type="file" class="form-control-file" id="exampleFormControlFile1">
+        </div>
+        <button type="button" class="btn btn-success send-btn">Send</button>
+        <span class="send-description">ctl(cmd) + Enter</span>
+      </form>
+    </div>
+  </div>
+</div>
