@@ -4,15 +4,7 @@
       ヘッダー部
     </div>
     <div class="card-body">
-      <!--左コメント-->
-      <div class="says">
-        <p>左ふきだし文</p>
-      </div>
-
-      <!--右コメント-->
-      <div class="mycomment">
-        <p>相手コメント</p>
-      </div>
+      <app-message *ngFor="let msg of messages" [side]="msg.side" [message]="msg.message"></app-message>
     </div>
     <div class="card-footer text-muted">
       <form>
