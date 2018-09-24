@@ -7,6 +7,11 @@
   color: #ffffff;
 }
 
+.time-line {
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+
 .send-description {
   float: right;
   margin: 23px 5px 0 0;

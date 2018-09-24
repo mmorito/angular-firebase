@@ -23,6 +23,7 @@
 .left p {
     margin: 0;
     padding: 0;
+    white-space: pre-wrap;
 }
 
 /* 右コメント */
@@ -40,6 +41,7 @@
     border-radius: 12px;
     background: #81F7F3;
     font-size: 15px;
+    white-space: pre-wrap;
 }
 
 .right p:after {
