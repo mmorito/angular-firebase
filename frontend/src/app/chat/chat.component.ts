@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-chat',
@@ -10,7 +11,9 @@ export class ChatComponent implements OnInit {
   public message: string;
   public messages: any[] = [];
 
-  constructor() { }
+  constructor(
+    private db: AngularFirestore
+  ) { }
 
   ngOnInit() {
   }
