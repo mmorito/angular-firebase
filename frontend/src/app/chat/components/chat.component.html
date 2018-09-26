@@ -1,8 +1,6 @@
 <div class="container">
   <div class="card main">
-    <div class="card-header">
-      ヘッダー部
-    </div>
+    <app-auth></app-auth>
     <div class="card-body time-line">
       <app-message *ngFor="let msg of messages" [side]="msg.side" [message]="msg.message"></app-message>
     </div>

@@ -1,15 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatCardModule, MatButtonModule, MatToolbarModule, MatIconModule } from '@angular/material';
 
-import { AuthService } from './services/auth.service';
 import { AuthComponent } from './components/auth/auth.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+  ],
+  exports: [
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    AuthComponent,
+    MatIconModule,
   ],
   declarations: [
-    AuthService,
     AuthComponent
   ]
 })

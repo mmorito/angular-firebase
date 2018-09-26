@@ -1,9 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 
 import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { SharedModule } from './shared/shared.module';
 
@@ -23,11 +26,12 @@ import { MessageComponent } from './chat/components/message/message.component';
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    SharedModule
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    SharedModule,
+    BrowserAnimationsModule,
   ],
-  exports: [
-    SharedModule
-  ],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent]
 })
