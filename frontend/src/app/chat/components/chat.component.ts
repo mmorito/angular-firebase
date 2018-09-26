@@ -28,8 +28,10 @@ export class ChatComponent implements OnInit {
   // }
 
   public send(): void {
-    this.messages.push({'side': 'right', 'message': this.message});
-    this.message = '';
+    if (this.message && this.message.trim().length > 0) {
+      this.messages.push({'side': 'right', 'message': this.message});
+      this.message = '';
+    }
   }
 
 }
