@@ -7,8 +7,8 @@ import { AngularFireModule } from '@angular/fire';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ChatComponent } from './chat/chat.component';
-import { MessageComponent } from './chat/message/message.component';
+import { ChatComponent } from './chat/components/chat.component';
+import { MessageComponent } from './chat/components/message/message.component';
 
 @NgModule({
   declarations: [
