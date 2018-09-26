@@ -7,6 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MessageComponent implements OnInit {
 
+  @Input() public email: string;
+  @Input() public displayName: string;
+  @Input() public timestamp: any;
   @Input() public side: string;
   @Input() public message: string;
 

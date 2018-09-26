@@ -1,18 +1,23 @@
 <div class="container">
   <div class="card main">
-    <app-auth></app-auth>
+    <app-auth (logedin)="login($event);"></app-auth>
     <div class="card-body time-line">
-      <app-message *ngFor="let msg of messages" [side]="msg.side" [message]="msg.message"></app-message>
+      <app-message *ngFor="let msg of items | async"
+                  [email]="msg.email"
+                  [displayName]="msg.displayName"
+                  [timestamp]="msg.timestamp"
+                  [side]="userInfo.email === msg.email ? 'right' : 'left'"
+                  [message]="msg.message"></app-message>
     </div>
     <div class="card-footer text-muted">
       <form>
         <div class="form-group">
-          <textarea class="form-control" name="message" [(ngModel)]="message" rows="3" style="min-height: 100px;"></textarea>
+          <textarea class="form-control" name="message" [(ngModel)]="message" rows="3" style="min-height: 100px;" [disabled]="!userInfo.email"></textarea>
         </div>
         <div class="form-group">
           <input type="file" class="form-control-file">
         </div>
-        <button class="send-btn" mat-raised-button color="primary" (click)="send();">Send</button>
+        <button class="send-btn" mat-raised-button color="primary" [disabled]="!userInfo.email" (click)="send();">Send</button>
         <span class="send-description">ctl(cmd) + Enter</span>
       </form>
     </div>

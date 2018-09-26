@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
+import { AuthService } from '../../shared/services/auth.service';
+
+import { Message } from '../models/message';
 
 @Component({
   selector: 'app-chat',
@@ -10,17 +15,31 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class ChatComponent implements OnInit {
 
   private roomId: string;
+  public userInfo: any;
+
+  private collections: AngularFirestoreCollection;
+  public items: Observable<{}[]>;
 
   public message: string;
-  public messages: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
-    private afs: AngularFirestore
-  ) { }
+    private afs: AngularFirestore,
+    private authService: AuthService,
+  ) {}
 
   ngOnInit() {
-    this.roomId = this.route.snapshot.paramMap.get('id');
+    this.roomId = this.route.snapshot.paramMap.get('roomId');
+    this.collections = this.afs.collection<Message>('talkroom-' + this.roomId);
+    this.items = this.collections.valueChanges();
+    this.authService.getLoginUserInfo('displayName,email,photoURL')
+    .then(user => {
+      this.userInfo = user;
+    }, () => this.userInfo = {});
+  }
+
+  public login(userInfo): void {
+    this.userInfo = userInfo;
   }
 
   // private getTimeline(): void {
@@ -29,7 +48,12 @@ export class ChatComponent implements OnInit {
 
   public send(): void {
     if (this.message && this.message.trim().length > 0) {
-      this.messages.push({'side': 'right', 'message': this.message});
+      const msg = new Message();
+      msg.email = this.userInfo.email;
+      msg.displayName = this.userInfo.displayName;
+      msg.message = this.message;
+      msg.timestamp = new Date();
+      this.collections.add(msg.getData());
       this.message = '';
     }
   }

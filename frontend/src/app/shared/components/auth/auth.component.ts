@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class AuthComponent implements OnInit {
 
+  @Output() public logedin = new EventEmitter();
   public isLogedin: boolean;
   public userInfo: any;
 
@@ -25,12 +26,14 @@ export class AuthComponent implements OnInit {
       if (res.credential) {
         this.isLogedin = true;
         this.userInfo = res.user;
+        this.logedin.emit(this.userInfo);
       }
     });
   }
 
   public logout(): void {
     this.authService.logout();
+    alert('lougout!');
     this.isLogedin = false;
   }
 

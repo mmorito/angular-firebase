@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyD5GT0aRAFiaNQZKtYBbzsK9La8xVcu4mI',
-    authDomain: 'mnes-cp100-3.firebaseapp.com',
-    databaseURL: 'https://mnes-cp100-3.firebaseio.com',
-    projectId: 'mnes-cp100-3',
-    storageBucket: 'mnes-cp100-3.appspot.com',
-    messagingSenderId: '257539419600'
+    apiKey: 'AIzaSyBb4V32r4uAPHaYLgFvgxIuUXsqgUddnxo',
+    authDomain: 'little-busters-refrain.firebaseapp.com',
+    databaseURL: 'https://little-busters-refrain.firebaseio.com',
+    projectId: 'little-busters-refrain',
+    storageBucket: 'little-busters-refrain.appspot.com',
+    messagingSenderId: '177312144765'
   }
 };
 
