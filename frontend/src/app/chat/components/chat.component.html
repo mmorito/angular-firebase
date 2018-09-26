@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card main">
     <app-auth (logedin)="login($event);"></app-auth>
-    <div class="card-body time-line">
+    <div #scrollArea class="card-body time-line">
       <app-message *ngFor="let msg of items | async | orderBy:'timestamp'"
                   [email]="msg.email"
                   [displayName]="msg.displayName"
@@ -12,7 +12,7 @@
     <div class="card-footer text-muted">
       <form>
         <div class="form-group">
-          <textarea class="form-control" name="message" [(ngModel)]="message" rows="3" style="min-height: 100px;" [disabled]="!userInfo.email"></textarea>
+          <textarea class="form-control" name="message" [(ngModel)]="message" rows="3" style="min-height: 100px;" [disabled]="!userInfo.email" (keyup)="keypress($event)"></textarea>
           <button class="send-btn" mat-raised-button color="primary" [disabled]="!userInfo.email" (click)="send();">Send</button>
           <span class="send-description">ctl(cmd) + Enter</span>
         </div>

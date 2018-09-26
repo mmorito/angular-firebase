@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
@@ -25,6 +25,9 @@ export class ChatComponent implements OnInit {
 
   public message: string;
 
+  private ctl: boolean;
+  private enter: boolean;
+
   constructor(
     private route: ActivatedRoute,
     private afs: AngularFirestore,
@@ -33,6 +36,8 @@ export class ChatComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.ctl = false;
+    this.enter = false;
     this.roomId = this.route.snapshot.paramMap.get('roomId');
     this.collections = this.afs.collection<Message>('talkroom-' + this.roomId);
     this.items = this.collections.valueChanges();
@@ -55,6 +60,23 @@ export class ChatComponent implements OnInit {
       msg.timestamp = new DatePipe('en-US').transform(new Date(), 'yyyy-MM-ddTHH:mm:ssZ');
       this.collections.add(msg.getData());
       this.message = '';
+      this.ctl = false;
+      this.enter = false;
+    }
+  }
+
+  public keypress(event): void {
+    switch (event.keyCode) {
+      case 17:
+      case 91:
+        this.ctl = true;
+        break;
+      case 13:
+        this.enter = true;
+        break;
+    }
+    if (this.ctl && this.enter) {
+      this.send();
     }
   }
 
