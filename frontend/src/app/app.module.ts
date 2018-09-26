@@ -7,6 +7,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { SharedModule } from './shared/shared.module';
 
@@ -28,6 +29,7 @@ import { MessageComponent } from './chat/components/message/message.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     SharedModule,
     BrowserAnimationsModule,
   ],

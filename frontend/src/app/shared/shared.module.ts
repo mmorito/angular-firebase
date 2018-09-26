@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule, MatButtonModule, MatToolbarModule, MatIconModule } from '@angular/material';
 
 import { AuthComponent } from './components/auth/auth.component';
+import { OrderByPipe } from './pipes/order-by.pipe';
 
 @NgModule({
   imports: [
@@ -18,9 +19,11 @@ import { AuthComponent } from './components/auth/auth.component';
     MatToolbarModule,
     AuthComponent,
     MatIconModule,
+    OrderByPipe,
   ],
   declarations: [
-    AuthComponent
+    AuthComponent,
+    OrderByPipe
   ]
 })
 export class SharedModule { }

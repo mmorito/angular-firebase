@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
+
 import { Observable } from 'rxjs';
 
 import { AuthService } from '../../shared/services/auth.service';
@@ -25,7 +28,8 @@ export class ChatComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private afs: AngularFirestore,
-    private authService: AuthService,
+    private storage: AngularFireStorage,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -42,17 +46,13 @@ export class ChatComponent implements OnInit {
     this.userInfo = userInfo;
   }
 
-  // private getTimeline(): void {
-  //   this.itemDoc = this.afs.doc<Item>('items/1');
-  // }
-
   public send(): void {
     if (this.message && this.message.trim().length > 0) {
       const msg = new Message();
       msg.email = this.userInfo.email;
       msg.displayName = this.userInfo.displayName;
       msg.message = this.message;
-      msg.timestamp = new Date();
+      msg.timestamp = new DatePipe('en-US').transform(new Date(), 'yyyy-MM-ddTHH:mm:ssZ');
       this.collections.add(msg.getData());
       this.message = '';
     }
