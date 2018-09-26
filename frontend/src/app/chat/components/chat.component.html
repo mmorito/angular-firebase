@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card main">
     <app-auth (logedin)="login($event);"></app-auth>
-    <div #scrollArea class="card-body time-line">
+    <div class="card-body time-line" ngx-auto-scroll lock-y-offset="10" observe-attributes>
       <app-message *ngFor="let msg of items | async | orderBy:'timestamp'"
                   [email]="msg.email"
                   [displayName]="msg.displayName"
