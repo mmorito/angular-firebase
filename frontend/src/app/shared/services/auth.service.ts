@@ -13,9 +13,6 @@ export class AuthService {
   ) { }
 
   public login(): Promise<auth.UserCredential> {
-    // const provider = new auth.GoogleAuthProvider();
-    // provider.addScope('profile');
-    // provider.addScope('email');
     return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 

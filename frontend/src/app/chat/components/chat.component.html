@@ -1,25 +1,23 @@
 <div class="container">
-  <div class="card main">
-    <app-auth (logedin)="login($event);"></app-auth>
-    <div class="card-body time-line" ngx-auto-scroll lock-y-offset="10" observe-attributes>
-      <app-message *ngFor="let msg of items | async | orderBy:'timestamp'"
-                  [email]="msg.email"
-                  [displayName]="msg.displayName"
-                  [timestamp]="msg.timestamp"
-                  [side]="userInfo.email === msg.email ? 'right' : 'left'"
-                  [message]="msg.message"></app-message>
-    </div>
-    <div class="card-footer text-muted">
-      <form>
-        <div class="form-group">
-          <textarea class="form-control" name="message" [(ngModel)]="message" rows="3" style="min-height: 100px;" [disabled]="!userInfo.email" (keyup)="keypress($event)"></textarea>
-          <button class="send-btn" mat-raised-button color="primary" [disabled]="!userInfo.email" (click)="send();">Send</button>
-          <span class="send-description">ctl(cmd) + Enter</span>
-        </div>
-        <!-- <div class="form-group">
-          <input type="file" class="form-control-file" (change)="uploadFile($event)">
-        </div> -->
-      </form>
-    </div>
+  <app-auth (logedin)="login($event);"></app-auth>
+  <div class="time-line" ngx-auto-scroll lock-y-offset="5" observe-attributes>
+    <app-message *ngFor="let msg of items | async | orderBy:'timestamp'"
+                [email]="msg.email"
+                [displayName]="msg.displayName"
+                [timestamp]="msg.timestamp"
+                [side]="userInfo.email === msg.email ? 'right' : 'left'"
+                [message]="msg.message"></app-message>
+  </div>
+  <div class="footer">
+    <form>
+      <div class="form-group">
+        <textarea class="form-control" name="message" [(ngModel)]="message"  [disabled]="!userInfo.email" (keyup)="keypress($event)"></textarea>
+        <button class="send-btn" mat-raised-button color="primary" [disabled]="!userInfo.email" (click)="send();">Send</button>
+        <span class="send-description">ctl(cmd) + Enter</span>
+      </div>
+      <!-- <div class="form-group">
+        <input type="file" class="form-control-file" (change)="uploadFile($event)">
+      </div> -->
+    </form>
   </div>
 </div>

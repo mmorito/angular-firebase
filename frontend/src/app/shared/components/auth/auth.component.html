@@ -1,11 +1,14 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span class="spacer"></span>
-    <!-- ログイン中 -->
-    <div *ngIf="isLogedin" mat-card-avatar [ngStyle]="{'background-image': 'url(' + userInfo.photoURL + ')'}" style="background-size: cover;"></div>
-    <span *ngIf="isLogedin"style="margin-right: 10px; font-size: 12px;">{{userInfo.displayName}} {{userInfo.email}}</span>
-    <!-- <button *ngIf="isLogedin" mat-raised-button (click)="logout();">Logout</button> -->
-    <!-- 未ログイン -->
-    <button *ngIf="!isLogedin" mat-raised-button (click)="login();">login</button>
-  </mat-toolbar-row>
-</mat-toolbar>
+<div class="sticky-top">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span class="spacer"></span>
+      <!-- ログイン中 -->
+      <div *ngIf="isLogedin" mat-card-avatar [ngStyle]="{'background-image': 'url(' + userInfo.photoURL + ')'}" style="background-size: cover;"></div>
+      <span *ngIf="isLogedin"style="margin-right: 10px; font-size: 12px;">{{userInfo.displayName}} {{userInfo.email}}</span>
+      <!-- <button *ngIf="isLogedin" mat-raised-button (click)="logout();">Logout</button> -->
+      <!-- 未ログイン -->
+      <button *ngIf="!isLogedin" mat-raised-button (click)="login();">login</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+</div>

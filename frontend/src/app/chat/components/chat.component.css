@@ -1,6 +1,3 @@
-.main {
-  margin: 30px 200px 0 200px;
-}
 
 .card-header {
   background-color: #0489B1;
@@ -8,7 +5,7 @@
 }
 
 .time-line {
-  height: 60vh;
+  height: Calc(100vh - 254px);
   overflow-y: scroll;
 }
 
@@ -20,4 +17,10 @@
 .send-btn {
   float: right;
   margin-top: 10px;
+}
+
+.footer {
+  height: 130px;
+  background-color: #00080008;
+  padding: 10px 20px 0 20px;
 }
